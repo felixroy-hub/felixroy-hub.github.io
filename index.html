@@ -150,6 +150,16 @@
             color: var(--accent);
             font-size: 0.85rem;
         }
+        .project-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.2s ease;
+}
+
+.project-link:hover {
+    transform: translateY(-4px);
+}
 
         /* Foto Galerie Grid */
         .photo-grid {
@@ -237,7 +247,6 @@
         <div class="logo">Felix Roy</div>
         <nav>
             <a href="#videos">Showreel & Filme</a>
-            <a href="#fotos">Fotografie</a>
             <a href="#kontakt">Kontakt</a>
         </nav>
     </header>
@@ -250,62 +259,30 @@
     </div>
 
     <!-- Video Sektion -->
-    <section id="videos">
-        <h2 class="section-title">Ausgewählte Projekte</h2>
-        <div class="video-grid">
-            
-            <!-- Video 1 (Beispiel mit YouTube/Vimeo Einbettung) -->
-            <div class="project-card">
-                <div class="video-wrapper">
-                    <!-- Ersetze den Link bei src="..." durch deinen YouTube-Embed- oder Vimeo-Player-Link -->
-                    <iframe src="https://youtube.com" title="Video Projekt 1" allowfullscreen></iframe>
-                </div>
-                <div class="project-info">
-                    <span>Markenkampagne • Regie & Konzept</span>
-                    <h3>Projekttitel Eins</h3>
-                </div>
-            </div>
-
-            <!-- Video 2 -->
-            <div class="project-card">
-                <div class="video-wrapper">
-                    <iframe src="https://youtube.com" title="Video Projekt 2" allowfullscreen></iframe>
-                </div>
-                <div class="project-info">
-                    <span>Commercial • Creative Direction</span>
-                    <h3>Projekttitel Zwei</h3>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Foto Sektion -->
-    <section id="fotos">
-        <h2 class="section-title">Fotografie & Art Direction</h2>
-        <div class="photo-grid">
-            
-            <!-- Foto 1 -->
+   <section id="projekte">
+    <h2 class="section-title">Ausgewählte Projekte</h2>
+    <div class="photo-grid">
+        
+        <!-- Projekt 1 (verlinkt auf projekt1.html) -->
+        <a href="projekt1.html" class="project-link">
             <div class="photo-item">
-                <!-- Ersetze den Link durch deinen eigenen Dateinamen, z.B. src="foto1.jpg" -->
-                <img src="Einfach.jpeg">
+                <img src="Einfach.jpeg" alt="Editorial Serie Berlin">
                 <div class="photo-caption">Editorial Serie – Berlin</div>
             </div>
+        </a>
 
-            <!-- Foto 2 -->
+        <!-- Projekt 2 (verlinkt auf projekt2.html) -->
+        <a href="projekt2.html" class="project-link">
             <div class="photo-item">
-                <img src="https://unsplash.com" alt="Fashion Kampagne">
+                <img src="projekt2-titel.jpg" alt="Herbst/Winter Kampagne">
                 <div class="photo-caption">Herbst/Winter Kampagne</div>
             </div>
+        </a>
 
-            <!-- Foto 3 -->
-            <div class="photo-item">
-                <img src="https://unsplash.com" alt="Produkt Design">
-                <div class="photo-caption">Produktästhetik & Licht</div>
-            </div>
+    </div>
+</section>
 
-        </div>
-    </section>
+
 
     <!-- Kontakt -->
     <section id="kontakt">
