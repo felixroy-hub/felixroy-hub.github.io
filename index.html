@@ -4,25 +4,321 @@ html
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Webseite</title>
+    <title>Portfolio – Creative Director</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: 50px auto; padding: 20px; line-height: 1.6; color: #333; }
-        header { border-bottom: 2px solid #0066cc; padding-bottom: 10px; margin-bottom: 20px; }
-        h1 { color: #0066cc; }
-        footer { margin-top: 50px; font-size: 0.9em; color: #777; border-top: 1px solid #ddd; padding-top: 10px; }
+        /* Grunddesign & Farben */
+        :root {
+            --bg-color: #0e0e10;
+            --card-bg: #18181c;
+            --text-main: #f4f4f6;
+            --text-muted: #9e9ea7;
+            --accent: #d4af37; /* Edler Gold-Ton */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 5%;
+            position: sticky;
+            top: 0;
+            background: rgba(14, 14, 16, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav a {
+            color: var(--text-main);
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        /* Hero / Intro Bereich */
+        .hero {
+            padding: 100px 5% 80px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .hero-subtitle {
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4.2rem);
+            line-height: 1.15;
+            font-weight: 700;
+            margin-bottom: 25px;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.15rem;
+            max-width: 650px;
+        }
+
+        /* Sektionen allgemein */
+        section {
+            padding: 70px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            border-left: 3px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        /* Video Grid */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #26262c;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Format */
+            height: 0;
+            background: #000;
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .project-info {
+            padding: 20px;
+        }
+
+        .project-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .project-info span {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* Foto Galerie Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            aspect-ratio: 4 / 5;
+            background: var(--card-bg);
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .photo-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.85));
+            font-size: 0.95rem;
+        }
+
+        /* Kontakt & Footer */
+        .contact-box {
+            background: var(--card-bg);
+            padding: 50px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #26262c;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 14px 32px;
+            background: var(--accent);
+            color: #000;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: opacity 0.3s;
+        }
+
+        .btn:hover {
+            opacity: 0.85;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 5%;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #222;
+            margin-top: 50px;
+        }
+
+        /* Anpassung für kleine Handy-Bildschirme */
+        @media (max-width: 600px) {
+            .video-grid { grid-template-columns: 1fr; }
+            nav { display: none; } /* Auf Handy kompakt halten */
+        }
     </style>
 </head>
 <body>
+
+    <!-- Navigation -->
     <header>
-        <h1>Willkommen auf meiner Webseite</h1>
-        <p>Schön, dass du hier bist!</p>
+        <div class="logo">DEIN NAME</div>
+        <nav>
+            <a href="#videos">Showreel & Filme</a>
+            <a href="#fotos">Fotografie</a>
+            <a href="#kontakt">Kontakt</a>
+        </nav>
     </header>
-    <main>
-        <h2>Über mich / Mein Projekt</h2>
-        <p>Hier steht dein eigener Text. Du kannst diesen Text später jederzeit direkt auf GitHub bearbeiten.</p>
-    </main>
+
+    <!-- Intro -->
+    <div class="hero">
+        <span class="hero-subtitle">Creative Direction • Film • Fotografie</span>
+        <h1>Visuelle Geschichten mit Charakter und Präzision.</h1>
+        <p>Ich entwickle Markenästhetik, Kampagnenfilme und Bildwelten von der ersten Idee bis zur finalen Produktion.</p>
+    </div>
+
+    <!-- Video Sektion -->
+    <section id="videos">
+        <h2 class="section-title">Ausgewählte Filme & Kampagnen</h2>
+        <div class="video-grid">
+            
+            <!-- Video 1 (Beispiel mit YouTube/Vimeo Einbettung) -->
+            <div class="project-card">
+                <div class="video-wrapper">
+                    <!-- Ersetze den Link bei src="..." durch deinen YouTube-Embed- oder Vimeo-Player-Link -->
+                    <iframe src="https://youtube.com" title="Video Projekt 1" allowfullscreen></iframe>
+                </div>
+                <div class="project-info">
+                    <span>Markenkampagne • Regie & Konzept</span>
+                    <h3>Projekttitel Eins</h3>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div class="project-card">
+                <div class="video-wrapper">
+                    <iframe src="https://youtube.com" title="Video Projekt 2" allowfullscreen></iframe>
+                </div>
+                <div class="project-info">
+                    <span>Commercial • Creative Direction</span>
+                    <h3>Projekttitel Zwei</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Foto Sektion -->
+    <section id="fotos">
+        <h2 class="section-title">Fotografie & Art Direction</h2>
+        <div class="photo-grid">
+            
+            <!-- Foto 1 -->
+            <div class="photo-item">
+                <!-- Ersetze den Link durch deinen eigenen Dateinamen, z.B. src="foto1.jpg" -->
+                <img src="https://unsplash.com" alt="Editorial Portrait">
+                <div class="photo-caption">Editorial Serie – Berlin</div>
+            </div>
+
+            <!-- Foto 2 -->
+            <div class="photo-item">
+                <img src="https://unsplash.com" alt="Fashion Kampagne">
+                <div class="photo-caption">Herbst/Winter Kampagne</div>
+            </div>
+
+            <!-- Foto 3 -->
+            <div class="photo-item">
+                <img src="https://unsplash.com" alt="Produkt Design">
+                <div class="photo-caption">Produktästhetik & Licht</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Kontakt -->
+    <section id="kontakt">
+        <div class="contact-box">
+            <h2>Bereit für ein neues Projekt?</h2>
+            <p style="color: var(--text-muted); margin-top: 10px;">Verfügbar für Creative Direction, Kampagnen und ausgewählte Produktionen.</p>
+            <a href="mailto:hallo@deinedomain.de" class="btn">E-Mail schreiben</a>
+        </div>
+    </section>
+
+    <!-- Footer & Impressum -->
     <footer>
-        <p>Impressum: Dein Name, Deine Straße, Deine Stadt | E-Mail: kontakt@deinedomain.de</p>
+        <p>&copy; 2026 Dein Name. Alle Rechte vorbehalten.</p>
+        <p style="margin-top: 8px;">Impressum: Dein Name | Musterstraße 1, 10115 Berlin | hallo@deinedomain.de</p>
     </footer>
+
 </body>
 </html>
