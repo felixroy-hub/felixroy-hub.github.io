@@ -1,1 +1,79 @@
 
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editorial Serie – Berlin | Projekt</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            background-color: #111111; 
+            color: #f4f4f4; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 40px 20px; 
+            line-height: 1.6; 
+        }
+        .back-link { 
+            display: inline-block; 
+            margin-bottom: 30px; 
+            text-decoration: none; 
+            color: #aaaaaa; 
+            font-weight: bold; 
+            transition: color 0.2s ease;
+        }
+        .back-link:hover { 
+            color: #ffffff; 
+        }
+        h1 { 
+            margin-bottom: 10px; 
+            color: #ffffff;
+        }
+        .description { 
+            max-width: 700px; 
+            margin-bottom: 40px; 
+            color: #bbbbbb; 
+        }
+        
+        /* Bildergalerie im 16:9-Format */
+        .project-gallery { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); 
+            gap: 25px; 
+        }
+        .project-gallery img { 
+            width: 100%; 
+            aspect-ratio: 16 / 9; 
+            object-fit: cover; 
+            display: block; 
+            background-color: #1e1e1e; 
+        }
+
+        /* Auf kleinen Handy-Bildschirmen 1 Spalte statt 2 */
+        @media (max-width: 600px) {
+            .project-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Zurück-Button zur Startseite -->
+    <a href="index.html" class="back-link">← Zurück zu Ausgewählte Projekte</a>
+
+    <!-- Projekttitel & Beschreibung -->
+    <h1>Editorial Serie – Berlin</h1>
+    <p class="description">Hier steht eine kurze Beschreibung zu deiner Fotostrecke, dem Konzept oder dem Kunden.</p>
+
+    <!-- Deine Projekt-Bilder -->
+    <div class="project-gallery">
+        <img src="Einfach.jpeg" alt="Ansicht 1">
+        <img src="Elterngeld.jpeg" alt="Ansicht 2">
+        <img src="Sicher.jpeg" alt="Ansicht 3">
+        <img src="‎‎Kulturpass.jpeg" alt="Ansicht 4">
+    </div>
+
+</body>
+</html>
